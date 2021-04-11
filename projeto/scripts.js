@@ -479,7 +479,7 @@ function ready([data, municipios]) {
     chart.xAxis().ticks(5);
     chart.xAxis().tickFormat(d3.format("d"));
     chart.yAxis().tickFormat(d3.format(".0%"));
-    chart.ordinalColors(['DarkGray', 'darkorange', 'blue']);
+    chart.ordinalColors(['DarkGray', 'darkorange', 'steelBlue']);
     chart.render();
 
 
@@ -570,7 +570,7 @@ function ready([data, municipios]) {
 
     // EVASÃO POR ANOS CURSADOS
     lineChart.margins({ top: 40, right: 50, bottom: 40, left: 80 })
-        .width(800)
+        .width(1100)
         .height(400)
         .renderArea(true)
         .brushOn(true)

@@ -13,6 +13,9 @@
     <!-- Bootstrap core CSS -->
     <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Source+Serif+Pro:ital,wght@0,300;0,600;1,600&display=swap" rel="stylesheet">
+
     <!-- Custom styles for this template -->
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/dc@4/dist/style/dc.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
@@ -31,11 +34,9 @@
                 <div class="row">
                     <div class="col-sm-8 col-md-7 py-4">
                         <h4 class="text-white">Sobre</h4>
-                        <p class="text-muted">
-                            A evasão é um problema que aflige as instituições de ensino em geral. <br>
-                            Essa perda de alunos antes da conclusão do curso acontece por variados motivos e deve ser acompanhada pelas instituições para criar ações eficazes de minimização desses números. 
-                            Dentro da Universidade Federal do Ceará (UFC), os números estão disponíveis para consulta e sevem não só como insumos para um planejamento efetivo mas também como prestação de contas com a sociedade. <br>
-                            Nesta página apresentamos e discutimos os dados de evasão da UFC de 2015 a 2019.
+                        <p class="text-white sobre">
+                            Visualização de dados criados para a disciplina de Visusualização Científica ministrada pela professor Emanuele Santos. Disciplina componente do currículo do Programa de Mestrado e Doutorado em Ciência da Computação (MDCC) da Universidade Federal do Ceará.<br> <br>
+                            Dados abertos fornecidos pelo <a href="https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/microdados/censo-da-educacao-superior" target="_blank">INEP</a>
                         </p>
                     </div>
                     <div class="col-sm-4 offset-md-1 py-4">
@@ -43,19 +44,19 @@
                         <ul class="list-unstyled">
                             <li style="padding-top: 10px;">
                                 <a href="https://github.com/Edilaine-CE" target="_blank" class="text-white text-decoration-none">
-                                    <img class="img-fluid rounded-circle" src="https://avatars.githubusercontent.com/u/17799551?v=4" width="60px" />
+                                    <img class="img-fluid rounded-circle perfis" src="https://avatars.githubusercontent.com/u/17799551?v=4" width="60px" />
                                     Edilaine Santiago
                                 </a>
                             </li>
                             <li style="padding-top: 10px;">
                                 <a href="https://github.com/Fausto14" target="_blank" class="text-white text-decoration-none">
-                                    <img class="img-fluid rounded-circle" src="https://avatars.githubusercontent.com/u/5504338?v=4" width="60px" />
+                                    <img class="img-fluid rounded-circle perfis" src="https://avatars.githubusercontent.com/u/5504338?v=4" width="60px" />
                                     Fausto Sampaio                                    
                                 </a>
                             </li>
                             <li style="padding-top: 10px;">
                                 <a href="https://github.com/mateusp55" target="_blank" class="text-white text-decoration-none">
-                                    <img class="img-fluid rounded-circle" src="https://avatars.githubusercontent.com/u/44878823?v=4" width="60px"/>
+                                    <img class="img-fluid rounded-circle perfis" src="https://avatars.githubusercontent.com/u/44878823?v=4" width="60px"/>
                                     Mateus Pinheiro
                                 </a>
                             </li>
@@ -70,7 +71,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" aria-hidden="true" class="me-2" viewBox="0 0 24 24">
                         <path d="M1 11a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3zm5-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V2z" />
                     </svg>
-                    <strong>Evasão na Universidade Federal do Ceará</strong>
+                    <strong>Visualização Científica 2020.1</strong>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -79,6 +80,9 @@
         </div>
     </header>
 
+
+<div class="imagebg"></div>
+<div class="detalhe"><img src="detalhe.png"></div>
     <main>
         <div class="fab">
             <button class="main">
@@ -94,15 +98,15 @@
         <section class="py-2 text-center container">
             <div class="row py-lg-5">
                 <div class="col-lg-10 col-md-8 mx-auto">
-                    <h1 class="fw-light">
-                        <b>Evasão na Universidade Federal do Ceará
-                        <br>2015 - 2019</b>
+                    <h1>
+                        Evasão na Universidade Federal do Ceará
+                        <br>2015 - 2019
                     </h1>
                     <p class="lead text-dark">
-                        A evasão é um problema que aflige as instituições de ensino em geral. <br>
-                        Essa perda de alunos antes da conclusão do curso acontece por variados motivos e deve ser acompanhada pelas instituições para criar ações eficazes de minimização desses números.<br>
-                        Dentro da Universidade Federal do Ceará (UFC), os números estão disponíveis para consulta e sevem não só como insumos para um planejamento efetivo mas também como prestação de contas com a sociedade. <br>
-                        Nesta página apresentamos e discutimos os dados de evasão da UFC de 2015 a 2019.
+                        A evasão é um problema que aflige as instituições de ensino em geral.
+                        Essa perda de alunos antes da conclusão do curso acontece por variados motivos e deve ser acompanhada pelas instituições para criar ações eficazes de minimização desses números.<br> <br>
+                        É interessante ver uma a queda na taxa de evasão que aconteceu entre os anos 2015 e 2017. Como esse indicador volta a subir no ano seguinte, se faz necessário investigar as mudanças que ocorreram para estimular esse comportamento por parte dos alunos. Um indicador útil para essa reflexão é como que esses alunos evadidos estão distribuídos pelos cursos oferecidos pela universiade. <br> <br>Dica: clique nos gráficos para filtrar as informações na página.
+
                     </p>
                     
                 </div>
@@ -123,13 +127,9 @@
                         </article>
                         <figure class="cbp-so-side cbp-so-side-right">
                             <div class="col">
-                                <div class="card shadow-sm" style="height: 443px">
-                                    <div class="card-body">
-                                        <p class="card-text">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt in libero sed viverra. Donec auctor, libero sed pharetra tincidunt, augue dui aliquet diam, nec aliquam sem dui id arcu. Quisque id sagittis felis, lobortis sagittis felis. Integer non bibendum turpis. Nulla neque ligula,
-                                        fermentum ac nibh vitae, luctus viverra diam. Integer tortor leo, egestas ac orci in, condimentum suscipit augue. Ut pellentesque ipsum felis, sed hendrerit tortor rhoncus ut. Cras ornare dolor eget urna tincidunt pulvinar. Sed sed mauris maximus, rhoncus sem elementum, blandit quam. Vivamus
-                                        vulputate aliquam dolor, sed ultricies ex rutrum nec..</p>
-                                    </div>
+                                <div class="card shadow-sm">
+                                    <h5 class="card-title m-2 text-center">Evasão por curso (TOP 10)</h5>
+                                    <div id="chart2" class="align-items-center"></div>
                                 </div>
                             </div>
                         </figure>
@@ -138,28 +138,11 @@
 
                 <section class="cbp-so-section">
                     <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 g-3">
-                        <article class="cbp-so-side cbp-so-side-left">
-                            <div class="col">
-                                <div class="card shadow-sm" style="height: 443px">
-                                    <div class="card-body">
-                                        <p class="card-text">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt in libero sed viverra. Donec auctor, libero sed pharetra tincidunt, augue dui aliquet diam, nec aliquam sem dui id arcu. Quisque id sagittis felis, lobortis sagittis felis. Integer non bibendum turpis.
-                                            Nulla neque ligula,
-                                            fermentum ac nibh vitae, luctus viverra diam. Integer tortor leo, egestas ac orci in, condimentum suscipit augue. Ut pellentesque ipsum felis, sed hendrerit tortor rhoncus ut. Cras ornare dolor eget urna tincidunt pulvinar. Sed sed mauris maximus, rhoncus sem elementum,
-                                            blandit quam. Vivamus
-                                            vulputate aliquam dolor, sed ultricies ex rutrum nec..</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-                        <figure class="cbp-so-side cbp-so-side-right">
-                            <div class="col">
-                                <div class="card shadow-sm">
-                                    <h5 class="card-title m-2 text-center">Evasão por curso (TOP 10)</h5>
-                                    <div id="chart2" class="align-items-center"></div>
-                                </div>
-                            </div>
-                        </figure>
+                        <div class="col-lg-10 col-md-8 mx-auto">
+                            <p class="paragrafos">
+                                Analisando o perfil do aluno que evade, observa-se que alunos do sexo masculino, representam mais de 60% dos evadidos e quase 100% dos evadidos não recebem nenhum tipo de bolsa (estágio, pesquisa, extensão ou monitoria). O fato do aluno não receber bolsa, pode afetar sua desistência, pois por questão financeira esse aluno pode deixar o curso pois precisa trabalhar. A faixa etária com maior taxa de evasão está entre 19 a 21 anos, representando quase 30%. Quanto maior a idade, menor a chance de evasão, porém a partir de 48 ano, percebe-se um aumento nesse número. Nos cinco anos analisados, observa-se que metade dos alunos evadidos são de escolas particulares e outra metade de escola pública.
+                    
+                        </div>
                     </div>
                 </section>
                 
@@ -170,9 +153,6 @@
                                 <div class="card shadow-sm">
                                     <h5 class="card-title m-2 text-center">Evasão por origem escolar</h5>
                                     <div id="chart3" class="align-items-center"></div>
-                                    <div class="card-body">
-                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                    </div>
                                 </div>
                             </div>
                         </article>
@@ -181,9 +161,6 @@
                                 <div class="card shadow-sm">
                                     <h5 class="card-title m-2 text-center">Evasão por Gênero e Faixa Etária</h5>
                                     <div id="chart4" class="align-items-center"></div>
-                                    <div class="card-body">
-                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                    </div>
                                 </div>
                             </div>
                         </figure>
@@ -195,47 +172,50 @@
                         <article class="cbp-so-side cbp-so-side-right">
                             <div class="col">
                                 <div class="card shadow-sm">
-                                    <h5 class="card-title m-2 text-center">Por gênero</h5>
+                                    <h5 class="card-title m-2 text-center titulo-pizza">Por gênero</h5>
                                     <div id="pie-chart-genero" class="text-center align-items-center"></div>
-                                    <div class="card-body">
-                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                    </div>
                                 </div>
                             </div>
                         </article>
                         <figure class="cbp-so-side cbp-so-side-left">
                             <div class="col">
                                 <div class="card shadow-sm">
-                                    <h5 class="card-title m-2 text-center">Recebem bolsa?</h5>
+                                    <h5 class="card-title m-2 text-center titulo-pizza">Recebem bolsa?</h5>
                                     <div id="pie-chart-bolsa" class="text-center align-items-center"></div>
-                                    <div class="card-body">
-                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                    </div>
                                 </div>
                             </div>
                         </figure>
                         <article class="cbp-so-side cbp-so-side-right">
                             <div class="col">
                                 <div class="card shadow-sm">
-                                    <h5 class="card-title m-2 text-center">Por grau acadêmico</h5>
+                                    <h5 class="card-title m-2 text-center titulo-pizza">Por grau acadêmico</h5>
                                     <div id="pie-chart-grau" class="text-center align-items-center"></div>
-                                    <div class="card-body">
-                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                    </div>
                                 </div>
                             </div>
                         </article>
                         <figure class="cbp-so-side cbp-so-side-left">
                             <div class="col">
                                 <div class="card shadow-sm">
-                                    <h5 class="card-title m-2 text-center">Por modalidade</h5>
+                                    <h5 class="card-title m-2 text-center titulo-pizza">Por modalidade</h5>
                                     <div id="pie-chart-modalidade" class="text-center align-items-center"></div>
-                                    <div class="card-body">
-                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                    </div>
                                 </div>
                             </div>
                         </figure>
+                    </div>
+                </section>
+
+                <section class="cbp-so-section">
+                    <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 g-3">
+                        <div class="col-lg-10 col-md-8 mx-auto">
+                            <p class="paragrafos destaque">
+                                A maioria dos alunos deixaram os seus cursos ainda no primeiro ano.
+                            </p>
+
+                            <p class="paragrafos">
+                                Essa informação pode sugerir que alunos desistem porque o curso não correspondeu às suas espectativas. Esse tipo de problema pode ser mitigado com projeto como a Feira das Profissões, em que alunos da universidade apresentam os cursos para alunos de ensino médio. Com essa experiência, os vestibulandos podem fazer uma escolha mais embasada e menos idealizada.
+                            </p>
+                    
+                        </div>
                     </div>
                 </section>
 
@@ -246,39 +226,52 @@
                                 <div class="card shadow-sm">
                                     <h5 class="card-title m-2 text-center">Evasão por quantidade de anos cursados</h5>
                                     <div id="chart5" class="text-center align-items-center"></div>
-                                    <div class="card-body">
-                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                    </div>
                                 </div>
                             </div>
                         </article>
                     </div>
                 </section>
 
-                <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 g-3 cbp-so-section">
-                    <article class="cbp-so-side cbp-so-side-left">
-                        <div class="col">
-                            <div class="card shadow-sm">
-                                <h5 class="card-title m-2 text-center">Evasão por local de oferta do curso</h5>
-                                <div id="mapid" class="align-items-center" style="height: 540px"></div>
-                                <div class="card-body">
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                </div>
-                            </div>
+                <section class="cbp-so-section">
+                    <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 g-3">
+                        <div class="col-lg-10 col-md-8 mx-auto">
+                            <p class="paragrafos">
+                                Ainda pensado no contexto dos alunos evadidos da universidade, é importante analisar também se existem difrenças significativas dos números entre diferentes raças. Isso pode guiar a criação de políticas afirmativas para uma educação superior mais igualitária. Além disso, um outro indicativo interessante é a concetração de alunos evadidos nos diferentes polos da UFC, como pode ser visto no mapa abaixo. 
+                            </p>
+                    
                         </div>
-                    </article>
+                    </div>
+                </section>
+
+                <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 g-3 cbp-so-section">
                     <figure class="cbp-so-side cbp-so-side-right">
                         <div class="col">
                             <div class="card shadow-sm">
                                 <h5 class="card-title m-2 text-center">Comparativo por Cor/Raça</h5>
                                 <div id="chart6" class="align-items-center"></div>
-                                <div class="card-body">
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                </div>
                             </div>
                         </div>
                     </figure>
+                    <article class="cbp-so-side cbp-so-side-left">
+                        <div class="col">
+                            <div class="card shadow-sm">
+                                <h5 class="card-title m-2 text-center">Evasão por local de oferta do curso</h5>
+                                <div id="mapid" class="align-items-center" style="height: 540px"></div>
+                            </div>
+                        </div>
+                    </article>
                 </div>
+
+                <section class="cbp-so-section">
+                    <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 g-3">
+                        <div class="col-lg-10 col-md-8 mx-auto">
+                            <p class="paragrafos">
+                                A Universidade Pública é um instrumento de transformação, tando econômica quanto social. Por isso é importante que esses dados apresentados aqui sejam de fácil acesso. Com um menor índice de evasão grantimos uma maior eficiência do sistema de educação superior público, um  bem imensurável para a sociedade.
+                            </p>
+                    
+                        </div>
+                    </div>
+                </section>
             </div>
         </div>
 

@@ -1,3 +1,19 @@
+body{
+  font-family: 'Source Serif Pro', serif;
+}
+
+h1{
+  font-family: 'Dela Gothic One', cursive !important;
+  font-size: 60px;
+  margin-bottom: 150px;
+  margin-top: 50px;
+  z-index: 1;
+}
+
+h4{
+  font-family: 'Dela Gothic One', cursive !important;
+}
+
 .jumbotron {
   padding-top: 3rem;
   padding-bottom: 3rem;
@@ -88,4 +104,57 @@ footer p {
     background-clip: border-box !important;
     border: none !important; 
     border-radius: none !important;
+}
+
+.detalhe{
+    position: absolute;
+    right: 100px;
+    top: -100px;
+    z-index: -5;
+      }
+
+.imagebg{
+    width: 100%;
+    height: 500px;
+    background-image: url("bg.png");
+    position: absolute;
+    top:50px;
+    z-index: -10;
+      }
+
+.lead{
+  text-align: justify;
+  font-size: 1.55rem;
+  margin-bottom: -50px;
+}
+
+.paragrafos{
+  text-align: justify;
+  font-size: 1.55rem !important;
+  margin-top: 100px;
+  margin-bottom: 40px;
+}
+
+.card-title{
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.titulo-pizza{
+  font-size: 20px;
+}
+
+.destaque{
+        font-size: 40px !important;
+        text-align: left;
+        margin-bottom: -50px !important;
+
+      }
+
+.perfis{
+  margin-right: 10px;
+}
+
+.sobre{
+  margin-top: 20px !important;
 }
