@@ -15,6 +15,7 @@
 
     <!-- Custom styles for this template -->
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/dc@4/dist/style/dc.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
 
     <link rel="stylesheet" type="text/css" href="os/css/component.css" />
     <link rel="stylesheet" type="text/css" href="fab/fab.css" />
@@ -108,17 +109,45 @@
             </div>
         </section>
 
-        <div class="album py-2 bg-light">
+        <div class="album py-2">
             <div id="cbp-so-scroller" class="container cbp-so-scroller">
                 <section class="cbp-so-section">
                     <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 g-3">
                         <article class="cbp-so-side cbp-so-side-left">
                             <div class="col">
                                 <div class="card shadow-sm">
-                                    <h5 class="card-title m-2">Taxa de evasão por ano</h5>
+                                    <h5 class="card-title m-2 text-center">Taxa de evasão por ano</h5>
                                     <div id="chart1" class="align-items-center"></div>
+                                </div>
+                            </div>
+                        </article>
+                        <figure class="cbp-so-side cbp-so-side-right">
+                            <div class="col">
+                                <div class="card shadow-sm" style="height: 443px">
                                     <div class="card-body">
-                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                        <p class="card-text">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt in libero sed viverra. Donec auctor, libero sed pharetra tincidunt, augue dui aliquet diam, nec aliquam sem dui id arcu. Quisque id sagittis felis, lobortis sagittis felis. Integer non bibendum turpis. Nulla neque ligula,
+                                        fermentum ac nibh vitae, luctus viverra diam. Integer tortor leo, egestas ac orci in, condimentum suscipit augue. Ut pellentesque ipsum felis, sed hendrerit tortor rhoncus ut. Cras ornare dolor eget urna tincidunt pulvinar. Sed sed mauris maximus, rhoncus sem elementum, blandit quam. Vivamus
+                                        vulputate aliquam dolor, sed ultricies ex rutrum nec..</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </figure>
+                    </div>
+                </section>
+
+                <section class="cbp-so-section">
+                    <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 g-3">
+                        <article class="cbp-so-side cbp-so-side-left">
+                            <div class="col">
+                                <div class="card shadow-sm" style="height: 443px">
+                                    <div class="card-body">
+                                        <p class="card-text">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt in libero sed viverra. Donec auctor, libero sed pharetra tincidunt, augue dui aliquet diam, nec aliquam sem dui id arcu. Quisque id sagittis felis, lobortis sagittis felis. Integer non bibendum turpis.
+                                            Nulla neque ligula,
+                                            fermentum ac nibh vitae, luctus viverra diam. Integer tortor leo, egestas ac orci in, condimentum suscipit augue. Ut pellentesque ipsum felis, sed hendrerit tortor rhoncus ut. Cras ornare dolor eget urna tincidunt pulvinar. Sed sed mauris maximus, rhoncus sem elementum,
+                                            blandit quam. Vivamus
+                                            vulputate aliquam dolor, sed ultricies ex rutrum nec..</p>
                                     </div>
                                 </div>
                             </div>
@@ -126,11 +155,8 @@
                         <figure class="cbp-so-side cbp-so-side-right">
                             <div class="col">
                                 <div class="card shadow-sm">
-                                    <h5 class="card-title m-2">Evasão por curso (TOP 10)</h5>
+                                    <h5 class="card-title m-2 text-center">Evasão por curso (TOP 10)</h5>
                                     <div id="chart2" class="align-items-center"></div>
-                                    <div class="card-body">
-                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                    </div>
                                 </div>
                             </div>
                         </figure>
@@ -142,7 +168,7 @@
                         <article class="cbp-so-side cbp-so-side-right">
                             <div class="col">
                                 <div class="card shadow-sm">
-                                    <h5 class="card-title m-2">Evasão por origem escolar</h5>
+                                    <h5 class="card-title m-2 text-center">Evasão por origem escolar</h5>
                                     <div id="chart3" class="align-items-center"></div>
                                     <div class="card-body">
                                         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -153,7 +179,7 @@
                         <figure class="cbp-so-side cbp-so-side-left">
                             <div class="col">
                                 <div class="card shadow-sm">
-                                    <h5 class="card-title m-2">Evasão por Gênero e Faixa Etária</h5>
+                                    <h5 class="card-title m-2 text-center">Evasão por Gênero e Faixa Etária</h5>
                                     <div id="chart4" class="align-items-center"></div>
                                     <div class="card-body">
                                         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -163,6 +189,96 @@
                         </figure>
                     </div>
                 </section>
+
+                <section class="cbp-so-section">
+                    <div class="row row-cols-1 row-cols-sm-1 row-cols-md-4 g-3 cbp-so-section">
+                        <article class="cbp-so-side cbp-so-side-right">
+                            <div class="col">
+                                <div class="card shadow-sm">
+                                    <h5 class="card-title m-2 text-center">Por gênero</h5>
+                                    <div id="pie-chart-genero" class="text-center align-items-center"></div>
+                                    <div class="card-body">
+                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        <figure class="cbp-so-side cbp-so-side-left">
+                            <div class="col">
+                                <div class="card shadow-sm">
+                                    <h5 class="card-title m-2 text-center">Recebem bolsa?</h5>
+                                    <div id="pie-chart-bolsa" class="text-center align-items-center"></div>
+                                    <div class="card-body">
+                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </figure>
+                        <article class="cbp-so-side cbp-so-side-right">
+                            <div class="col">
+                                <div class="card shadow-sm">
+                                    <h5 class="card-title m-2 text-center">Por grau acadêmico</h5>
+                                    <div id="pie-chart-grau" class="text-center align-items-center"></div>
+                                    <div class="card-body">
+                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        <figure class="cbp-so-side cbp-so-side-left">
+                            <div class="col">
+                                <div class="card shadow-sm">
+                                    <h5 class="card-title m-2 text-center">Por modalidade</h5>
+                                    <div id="pie-chart-modalidade" class="text-center align-items-center"></div>
+                                    <div class="card-body">
+                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </figure>
+                    </div>
+                </section>
+
+                <section class="cbp-so-section">
+                    <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 g-3 cbp-so-section">
+                        <article class="cbp-so-side cbp-so-side-right">
+                            <div class="col">
+                                <div class="card shadow-sm">
+                                    <h5 class="card-title m-2 text-center">Evasão por quantidade de anos cursados</h5>
+                                    <div id="chart5" class="text-center align-items-center"></div>
+                                    <div class="card-body">
+                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+
+                <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 g-3 cbp-so-section">
+                    <article class="cbp-so-side cbp-so-side-left">
+                        <div class="col">
+                            <div class="card shadow-sm">
+                                <h5 class="card-title m-2 text-center">Evasão por local de oferta do curso</h5>
+                                <div id="mapid" class="align-items-center" style="height: 540px"></div>
+                                <div class="card-body">
+                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <figure class="cbp-so-side cbp-so-side-right">
+                        <div class="col">
+                            <div class="card shadow-sm">
+                                <h5 class="card-title m-2 text-center">Comparativo por Cor/Raça</h5>
+                                <div id="chart6" class="align-items-center"></div>
+                                <div class="card-body">
+                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </figure>
+                </div>
             </div>
         </div>
 
@@ -183,6 +299,7 @@
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="https://unpkg.com/crossfilter2@1.5.2/crossfilter.min.js"></script>
     <script src="https://unpkg.com/dc@4.0.5/dist/dc.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
 
     <script src="os/js/classie.js"></script>
     <script src="os/js/cbpScroller.js"></script>

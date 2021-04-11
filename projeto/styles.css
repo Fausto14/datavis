@@ -57,7 +57,7 @@ footer p {
 }
 
 .cbp-so-section {
-    margin-bottom: 10em !important;
+    margin-bottom: 0em !important;
 }
 
 .cbp-so-side {
@@ -70,4 +70,22 @@ footer p {
     -webkit-transition: -webkit-transform 0.5s, opacity 0.5s;
     -moz-transition: -moz-transform 0.5s, opacity 0.5s;
     transition: transform 0.5s, opacity 0.5s;
+}
+
+.shadow-sm {
+    box-shadow: 0rem 0rem rgba(0,0,0,.075) !important;
+}
+
+.card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: none !important; 
+    background-clip: border-box !important;
+    border: none !important; 
+    border-radius: none !important;
 }
