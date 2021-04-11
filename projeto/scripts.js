@@ -1254,20 +1254,36 @@ function ready([data, municipios]) {
         let saida = [];
         let temp = [];
         let keys = (data.map(function (j) { return j.key }))
+        let tot = 0;
         for (var x = 0; x < 3; x++) {
             keys.forEach(function (k, j) {
                 data.forEach(function (d, i) {
                     if (x == 1) {
-                        if (d.key === k)
-                            temp.push({ axis: k, value: d.value.evadidos / (d.value.evadidos + d.value.ingressantes + d.value.formados) });
+                        if (d.key === k) {
+                            tot = (d.value.evadidos + d.value.ingressantes + d.value.formados)
+                            if (tot > 0)
+                                temp.push({ axis: k, value: d.value.evadidos / tot });
+                            else
+                                temp.push({ axis: k, value: 0 });
+                        }
                     }
                     if (x == 0) {
-                        if (d.key === k)
-                            temp.push({ axis: k, value: d.value.ingressantes / (d.value.evadidos + d.value.ingressantes + d.value.formados) });
+                        if (d.key === k) {
+                            tot = (d.value.evadidos + d.value.ingressantes + d.value.formados)
+                            if (tot > 0)
+                                temp.push({ axis: k, value: d.value.ingressantes / tot });
+                            else
+                                temp.push({ axis: k, value: 0 });
+                        }
                     }
                     if (x == 2) {
-                        if (d.key === k)
-                            temp.push({ axis: k, value: d.value.formados / (d.value.evadidos + d.value.ingressantes + d.value.formados) });
+                        if (d.key === k) {
+                            tot = (d.value.evadidos + d.value.ingressantes + d.value.formados)
+                            if (tot > 0)
+                                temp.push({ axis: k, value: d.value.formados / tot });
+                            else
+                                temp.push({ axis: k, value: 0 });
+                        }
                     }
                 })
             })
