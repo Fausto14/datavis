@@ -369,6 +369,8 @@ function ready([data, municipios]) {
                     ano_sel = ano;
                 }
 
+                addTextFilter(ano, 'ano');
+
                 anoDim.filter(ano);
 
                 updatePyramidChart(ano);
@@ -395,9 +397,22 @@ function ready([data, municipios]) {
         .gap(5)
         .ordinalColors(['steelblue'])
         .on("filtered", function (chart, filter) {
+            if (chart._filters.length == 0) {
+                removeTextFilter('curso');
+            }
+            else {
+                addTextFilter(filter, 'curso');
+            }
+                
             updateAllCharts();
         })
-        
+    
+    rowChart.addFilterHandler(function (filters, filter) {
+        filters.length = 0; // empty the array
+        filters.push(filter);
+        return filters;
+    });    
+
     rowChart.xAxis().tickFormat(d3.format("d"));
     rowChart.render();
 
@@ -455,10 +470,14 @@ function ready([data, municipios]) {
                 escola = null;
                 escola_sel = '';
                 $('#chart3 .bar').removeClass('selected').removeClass('deselected');
+                removeTextFilter('ano');
+                removeTextFilter('escola');
             }
             else {
                 ano_sel = ano;
                 escola_sel = escola;
+                addTextFilter(ano, 'ano');
+                addTextFilter(escola, 'escola');
             }
 
             anoDim.filter(ano);
@@ -502,6 +521,12 @@ function ready([data, municipios]) {
             }).style('font-weight', 'bold');
         })
         .on("filtered", function (chart, filter) {
+            if (chart._filters.length == 0) {
+                removeTextFilter('genero');
+            }
+            else {
+                addTextFilter(filter, 'genero');
+            }
             updateAllCharts();
         })
         .render();
@@ -521,6 +546,12 @@ function ready([data, municipios]) {
             }).style('font-weight', 'bold');
         })
         .on("filtered", function (chart, filter) {
+            if (chart._filters.length == 0) {
+                removeTextFilter('grau');
+            }
+            else {
+                addTextFilter(filter, 'grau');
+            }
             updateAllCharts();
         })
         .render();
@@ -544,6 +575,15 @@ function ready([data, municipios]) {
             }).style('font-weight', 'bold');
         })
         .on("filtered", function (chart, filter) {
+            if (chart._filters.length == 0) {
+                removeTextFilter('bolsa');
+            }
+            else {
+                let _f = "Sim";
+                if (filter == false) _f = "Não";
+
+                addTextFilter(_f, 'bolsa');
+            }
             updateAllCharts();
         })
         .render();
@@ -563,6 +603,12 @@ function ready([data, municipios]) {
             }).style('font-weight', 'bold');
         })
         .on("filtered", function (chart, filter) {
+            if (chart._filters.length == 0) {
+                removeTextFilter('modalidade');
+            }
+            else {
+                addTextFilter(filter, 'modalidade');
+            }
             updateAllCharts();
         })
         .render();
@@ -650,6 +696,8 @@ function ready([data, municipios]) {
         let mapInstance = L.map('mapid').setView([-5.2731234, -39.3550498], 7)
             .on('click', function (e) {
                 poloDim.filter(null);
+                removeTextFilter('local');
+                updateMarkers();
                 updatePyramidChart();
                 updateRadarChart();
                 dc.redrawAll();
@@ -668,6 +716,22 @@ function ready([data, municipios]) {
     let map = _map();
     let muniMap = _muniMap();
 
+    var clicked;
+
+    var clickStyle = {
+        color: 'darkorange',
+        weight: 2,
+        fillColor: 'darkorange',
+        fillOpacity: 0.2
+    }
+    var unclickStyle = {
+        color: 'steelBlue',
+        weight: 2,
+        fillColor: 'steelBlue',
+        fillOpacity: 0.2
+    }
+
+
     function updateMarkers() {
         if (layerList.length == 1) {
             layerList[0].clearLayers() //remove circles in layerGroup
@@ -680,12 +744,7 @@ function ready([data, municipios]) {
         poloGrupo.all().forEach(function (d) {
             if (d.value > 0) {
                 let size = logScale(d.value * 10);
-                let circle = L.circle([muniMap.get(parseInt(d.key)).lat, muniMap.get(parseInt(d.key)).long], size, {
-                    color: 'steelBlue',
-                    weight: 2,
-                    fillColor: 'steelBlue',
-                    fillOpacity: 0.2
-                })
+                let circle = L.circle([muniMap.get(parseInt(d.key)).lat, muniMap.get(parseInt(d.key)).long], size, unclickStyle)
                 //circle.bindPopup("Polo: "+muniMap.get(parseInt(d.key)).nome + "<br>Evadidos: "+d.value)
                 circle.bindTooltip("Local da oferta: " + muniMap.get(parseInt(d.key)).nome + "<br>Evadidos: " + d.value,
                     {
@@ -693,12 +752,21 @@ function ready([data, municipios]) {
                         direction: 'right'
                     })
                 circle.on('click', function (e) {
+                    if (clicked) {
+                        clicked.setStyle(unclickStyle);
+                    }
+                    e.target.setStyle(clickStyle);
+                    clicked = e.target;
+
                     L.DomEvent.stopPropagation(e);
                     poloDim.filter(d.key);
+                    removeTextFilter('local');
+                    addTextFilter(muniMap.get(parseInt(d.key)).nome, 'local');
                     updatePyramidChart();
                     updateRadarChart();
                     dc.redrawAll();
                 })
+
                 circle.publicid = parseInt(d.key)
                 todisplay[i++] = circle;
             }
@@ -750,8 +818,8 @@ function ready([data, municipios]) {
         // find the maximum data value on either side
         //  since this will be shared by both of the x-axes
         var maxValue = Math.max(
-            d3.max(data, d => (d.Masculino)),
-            d3.max(data, d => (d.Feminino)),
+            d3.max(data, d => percentage(d.Masculino)),
+            d3.max(data, d => percentage(d.Feminino)),
         );
 
         // SET UP SCALES
@@ -787,12 +855,12 @@ function ready([data, municipios]) {
 
         var xAxisRight = d3.axisBottom(xScale)
             .ticks(5)
-            .tickFormat(d3.format('d'));
+            .tickFormat(d3.format('.0%'));
 
         // REVERSE THE X-AXIS SCALE ON THE LEFT SIDE BY REVERSING THE RANGE
         var xAxisLeft = d3.axisBottom(xScale.copy().range([pointA, 0]))
             .ticks(5)
-            .tickFormat(d3.format('d'));
+            .tickFormat(d3.format('.0%'));
 
         // MAKE GROUPS FOR EACH SIDE OF CHART
         // scale(-1,1) is used to reverse the left side so the bars grow left instead of right
@@ -851,7 +919,7 @@ function ready([data, municipios]) {
             .attr("fill", "steelblue")
             .attr('x', 0)
             .attr('y', d => yScale(d.grupo))
-            .attr('width', d => xScale((d.Masculino)))
+            .attr('width', d => xScale(percentage(d.Masculino)))
             .attr('height', yScale.bandwidth())
             .on('mouseover', function (d, i) {
                 //Dim all blobs
@@ -871,7 +939,7 @@ function ready([data, municipios]) {
             })
             .style('cursor', 'pointer')
             .append('title')
-            .text((d, i) => d.grupo + " - Masculino : " + d.Masculino)
+            .text((d, i) => d.grupo + " - Masculino : " + (percentage(d.Masculino)*100).toFixed(0)+"%")
             .style("font-size", "16px");
 
         rightBarGroup.selectAll('.bar.right')
@@ -881,7 +949,7 @@ function ready([data, municipios]) {
             .attr("fill", "darkorange")
             .attr('x', 0)
             .attr('y', d => yScale(d.grupo))
-            .attr('width', d => xScale((d.Feminino)))
+            .attr('width', d => xScale(percentage(d.Feminino)))
             .attr('height', yScale.bandwidth())
             .on('mouseover', function (d, i) {
                 //Dim all blobs
@@ -901,7 +969,7 @@ function ready([data, municipios]) {
             })
             .style('cursor', 'pointer')
             .append('title')
-            .text((d, i) => d.grupo + " - Feminino : " + d.Feminino)
+            .text((d, i) => d.grupo + " - Feminino : " + (percentage(d.Feminino)*100).toFixed(0)+"%")
             .style("font-size", "16px");
 
 
@@ -1085,7 +1153,7 @@ function ready([data, municipios]) {
         //Append the labels at each axis
         axis.append("text")
             .attr("class", "legend")
-            .style("font-size", "11px")
+            .style("font-size", "14px")
             .attr("text-anchor", "middle")
             .attr("dy", "0.35em")
             .attr("x", function (d, i) { return rScale(maxValue * cfg.labelFactor) * Math.cos(angleSlice * i - Math.PI / 2); })
@@ -1294,10 +1362,73 @@ function ready([data, municipios]) {
         return saida;
     }
 
+
+
     function updateAllCharts() {
         updateMarkers();
         updateRadarChart();
         updatePyramidChart();
     }
 
+    function addTextFilter(t, c) {
+        let _t = c == 'bolsa'? ("Bolsa: " + t) : t;
+        let text = "<li class= '" + c + "'><span class='text-dark'>" + _t + "</span></li>";
+        let has = $('.' + c).length;
+        let qtd = parseInt($('#qtde-filter').text());
+
+        if (has == 0) {
+            $('#itens').prepend(text);  
+            qtd++;
+        }
+        
+        $('#qtde-filter').text(qtd);
+
+        showFilters();
+    }
+
+    function removeTextFilter(c) {
+                
+        let has = $('.' + c).length;
+        let qtd = parseInt($('#qtde-filter').text());
+        
+        if (has > 0) {
+            $('.' + c).remove();
+            qtd--;
+        }
+        
+        
+        $('#qtde-filter').text(qtd);
+
+        showFilters();
+        
+    }
+
+    function showFilters() {
+        let qtd = parseInt($('#qtde-filter').text());
+        if (qtd <= 0) {
+            $('#btn-filter').addClass('invisible');
+        }
+        else {
+            $('#btn-filter').removeClass('invisible');
+        }
+    }
+
+    function resetFilters() {
+        
+        $('#chart1 .bar').removeClass('deselected');
+        $('#chart3 .bar').removeClass('deselected');
+
+
+        $('#itens ul li').remove();
+        $('#qtde-filter').text(0);
+
+        showFilters();
+
+        dc.filterAll();
+        dc.redrawAll();
+    }
+
+    $('#btn-reset').on('click', resetFilters);
+
 }
+
