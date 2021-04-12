@@ -760,7 +760,6 @@ function ready([data, municipios]) {
 
                     L.DomEvent.stopPropagation(e);
                     poloDim.filter(d.key);
-                    removeTextFilter('local');
                     addTextFilter(muniMap.get(parseInt(d.key)).nome, 'local');
                     updatePyramidChart();
                     updateRadarChart();
@@ -855,12 +854,12 @@ function ready([data, municipios]) {
 
         var xAxisRight = d3.axisBottom(xScale)
             .ticks(5)
-            .tickFormat(d3.format('.0%'));
+            .tickFormat(d3.format('.1%'));
 
         // REVERSE THE X-AXIS SCALE ON THE LEFT SIDE BY REVERSING THE RANGE
         var xAxisLeft = d3.axisBottom(xScale.copy().range([pointA, 0]))
             .ticks(5)
-            .tickFormat(d3.format('.0%'));
+            .tickFormat(d3.format('.1%'));
 
         // MAKE GROUPS FOR EACH SIDE OF CHART
         // scale(-1,1) is used to reverse the left side so the bars grow left instead of right
