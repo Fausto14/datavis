@@ -938,7 +938,7 @@ function ready([data, municipios]) {
             })
             .style('cursor', 'pointer')
             .append('title')
-            .text((d, i) => d.grupo + " - Masculino : " + (percentage(d.Masculino)*100).toFixed(0)+"%")
+            .text((d, i) => d.grupo + " - Masculino : " + (percentage(d.Masculino)*100).toFixed(1)+"%")
             .style("font-size", "16px");
 
         rightBarGroup.selectAll('.bar.right')
@@ -968,7 +968,7 @@ function ready([data, municipios]) {
             })
             .style('cursor', 'pointer')
             .append('title')
-            .text((d, i) => d.grupo + " - Feminino : " + (percentage(d.Feminino)*100).toFixed(0)+"%")
+            .text((d, i) => d.grupo + " - Feminino : " + (percentage(d.Feminino)*100).toFixed(1)+"%")
             .style("font-size", "16px");
 
 
